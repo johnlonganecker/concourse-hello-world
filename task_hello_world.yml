@@ -5,4 +5,4 @@ inputs:
   - name: hello-world-resource
 
 run:
-  path: hello-world-resource/task.sh
+  path: ls
