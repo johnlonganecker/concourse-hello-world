@@ -5,4 +5,5 @@ inputs:
   - name: hello-world-resource
 
 run:
-  path: ls hello-world-resource
+  path: ls
+  args: ["hello-world-resource"]
