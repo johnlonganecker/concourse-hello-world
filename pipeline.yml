@@ -3,10 +3,10 @@ resources:
 - name: hello-world-resource
   type: git
   source:
-    uri: ((hello-world-uri))
+    uri: {{hello-world-uri}}
     branch: master
-    username: ((username))
-    password: ((password))
+    username: {{username}}
+    password: {{password}}
     #skip_ssl_validation: true
 - name: pcfnorm-rootfs
   type: docker-image
@@ -15,15 +15,16 @@ resources:
     tag: "latest"
     username: {{docker_repo_username}}
     password: {{docker_repo_password}}
-    #ca_certs:
-    #- domain: {{docker_repo_domain}}
-       #cert: {{docker_repo_cert}}
+    ca_certs:
+    - domain: {{docker_repo_domain}}
+      cert: {{docker_repo_cert}}
 
 jobs:
 - name: job-hello-world
   public: true
   plan:
   - get: hello-world-resource
+  - get: pcfnorm-rootfs
   - task: hello-world
     image: pcfnorm-rootfs
     file: hello-world-resource/task_hello_world.yml
