@@ -5,8 +5,6 @@ resources:
   source:
     uri: {{hello-world-uri}}
     branch: master
-    username: {{username}}
-    password: {{password}}
     #skip_ssl_validation: true
 - name: pcfnorm-rootfs
   type: docker-image
